@@ -25,6 +25,13 @@ class NumbersController < ApplicationController
     @number = Number.find(params[:id])
   end
 
+  def destroy
+    @number = Number.find(params[:id])
+    if @number.destroy
+      redirect_to numbers_path, alert: "已删除！"
+    end
+  end
+
   private
   def number_params
     params.require(:number).permit(:analyzes_attributes => [:id, :domain, :remarks])
