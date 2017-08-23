@@ -1,0 +1,9 @@
+<h2>输入要分析的页面</h2>
+
+<%= form_tag analyzes_path, method: :post do %>
+<% 10.times do  %> 
+<input id="analyzes_domain" name="analyzes[domain][]" type="text" />
+<input id="analyzes_remarks" name="analyzes[remarks][]" type="text" />
+<% end %>
+<%= submit_tag "submit" %>
+<% end %>

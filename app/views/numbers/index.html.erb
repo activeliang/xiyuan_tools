@@ -1,0 +1,40 @@
+<legend style="font-size: 25px; text-align: center">历史记录</legend>
+
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>页面地址</th>
+      <th>备注</th>
+      <th colspan="2">详情</th>
+    </tr>
+  </thead>
+  <tbody>
+        <% @numbers.each do |number| %>
+          <tr>
+          <td rowspan="<%= render_need_row_no(number) %>">
+            第<%= number.id %>次
+            【<%= number.created_at.in_time_zone(8).strftime("%y-%m-%d %H:%M") %>】
+          </td>
+          <% number.analyzes.each do |analyze|  %>
+          <td rowspan="3"><%= link_to analyze.domain, analyze.domain %></td>
+          <td rowspan="3"><%= analyze.remarks %></td>
+          <th>Title:</th>
+          <td><%= analyze.title %></td>
+
+            <tr>
+              <th>Description:</th>
+              <td><%= analyze.description %></td>
+            </tr>
+
+            <tr>
+              <th>Keywords:</th>
+              <td><%= analyze.keyword %></td>
+            </tr>
+
+
+        <% end %>
+        </tr>
+      <% end %>
+  </tbody>
+</table>

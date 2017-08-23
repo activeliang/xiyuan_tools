@@ -1,0 +1,37 @@
+<div class="container">
+
+<h1></h1>
+
+  <legend style="font-size: 18px;">输入要解析的页面</legend>
+    <div class="row">
+      <%= simple_form_for @number do |f| %>
+
+        <%= f.nested_fields_for :analyzes do |ff| %>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <%= ff.label :domain, "页面地址" %>
+                    <%= ff.text_field :domain, :class => "form-control" %>
+                  </div>
+                </div>
+
+                <div class="col-sm-6">
+                  <div class="form-group">
+                  <%= ff.label :remarks, "备注" %>
+                  <%= ff.text_field :remarks, :class => "form-control" %>
+                </div>
+               </div>
+
+        <% end %>
+
+        <p class="pull-left">
+          <%= f.add_nested_fields_link :analyzes, "点击增加输入框", :class => "btn btn-info" %>
+        </p>
+
+      <%= f.submit "提交", class: "btn btn-success btn-block" %>
+      <% end %>
+
+
+
+    </div>
+
+</div>
