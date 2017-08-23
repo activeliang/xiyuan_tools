@@ -14,14 +14,16 @@
           <% @numbers.each do |number| %>
             <tr>
             <th rowspan="<%= render_need_row_no(number) %>">
-              【ID:<%= number.id %>】
-              【<%= number.created_at.in_time_zone(8).strftime("%y-%m-%d %H:%M") %>】
+              <div class="item-id">
+                【ID:<%= number.id %>】
+                【<%= number.created_at.in_time_zone(8).strftime("%y-%m-%d %H:%M") %>】
+              </div>
             </th>
             <% number.analyzes.each do |analyze|  %>
             <td rowspan="3" style="word-wrap:break-word;"><%= link_to analyze.domain, analyze.domain %></td>
             <td rowspan="3" style="word-wrap:break-word;"><%= analyze.remarks %></td>
             <th>Title:</th>
-            <td style="word-wrap:break-word;"><%= analyze.title %></td>
+            <td width="800px" style="word-wrap:break-word;"><%= analyze.title %></td>
 
               <tr>
                 <th>Description:</th>
