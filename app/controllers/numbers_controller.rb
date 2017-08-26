@@ -32,6 +32,23 @@ class NumbersController < ApplicationController
     end
   end
 
+  def liang
+    require 'nokogiri'
+    require 'open-uri'
+    url = "http://www.74808.com/jcs/yzxz.htm"
+    html=open(url).read
+    charset=Nokogiri::HTML(html).meta_encoding#！有些网页没有定义charset则不适用
+    html.force_encoding(charset)
+    html.encode!("utf-8", :undef => :replace, :replace => "?", :invalid => :replace)
+    doc = Nokogiri::HTML.parse html
+    table = doc.css("table")
+    rr = table.css("table").search("tr").to_a
+    ex = rr.to_a.delete_if {|i| !i.to_s.scan(/\d\d\d期/).first.present? }
+    @html = ex.last.to_html.html_safe
+    binding.pry
+
+  end
+
   private
   def number_params
     params.require(:number).permit(:analyzes_attributes => [:id, :domain, :remarks])
