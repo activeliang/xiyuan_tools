@@ -45,8 +45,6 @@ class NumbersController < ApplicationController
     rr = table.css("table").search("tr").to_a
     ex = rr.to_a.delete_if {|i| !i.to_s.scan(/\d\d\d期/).first.present? }
     @html = ex.last.to_html.html_safe
-    binding.pry
-
   end
 
   private
