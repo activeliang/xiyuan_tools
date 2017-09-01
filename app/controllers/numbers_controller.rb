@@ -35,7 +35,7 @@ class NumbersController < ApplicationController
   def liang
     require 'nokogiri'
     require 'open-uri'
-    url = "http://www.74808.com/jcs/yzxz.htm"
+    url = "http://www.74808.com/jcs/nyjy.htm"
     html=open(url).read
     charset=Nokogiri::HTML(html).meta_encoding#！有些网页没有定义charset则不适用
     html.force_encoding(charset)
